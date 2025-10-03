@@ -16,13 +16,13 @@ export function Contact({ scrollRef }) {
     return (
         <>
             {/* Contact Section */}
-            <section id="contact" className="px-6 py-20">
+            <section id="contact" className="mb-16 px-6 py-20 rounded-xl p-6 bg-zinc-800/30 backdrop-blur-sm ring-1 ring-white/5 hover:ring-fuchsia-500/20 transition mx-12">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500 mb-10">
                         Get in Touch
                     </h2>
                     <p className="text-sm text-gray-400 mb-12 max-w-xl mx-auto">
-                        Whether you want to discuss a project, collaborate on something awesome, or just say hi — my inbox is open 👇
+                        Whether you want to discuss a project, collaborate on something awesome, or just say hi - my inbox is open 👇
                     </p>
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                         <input

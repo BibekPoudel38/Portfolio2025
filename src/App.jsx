@@ -7,7 +7,8 @@ import { Footer } from './Footer';
 import { Hero } from './Hero';
 import { NavBar } from './NavBar';
 import { Project } from './Project';
-import { Skill } from './Skill';
+import { Skills } from './Skill';
+import { Publications } from './Publications.jsx';
 
 const App = () => {
 
@@ -17,9 +18,10 @@ const App = () => {
       <div className="h-24" />
       <Hero />
       <About />
+      <Publications/>
       <Experience />
       <Project />
-      <Skill />
+      <Skills />
       <Education />
       <Contact />
       <Footer />

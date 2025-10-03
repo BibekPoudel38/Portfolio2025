@@ -13,7 +13,7 @@ export function Hero() {
                         Hi 👋, I'm <span className="text-purple-400">Bibek Poudel</span>
                     </h2>
                     <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto mb-6">
-                        Software Engineer — Flutter • Django • LLMs • Full Stack
+                        Software Engineer - Flutter • Django • LLMs • Full Stack
                     </p>
                     <p className="text-sm text-gray-400 max-w-lg mx-auto mb-10">
                         I build tools and experiences that blend functionality and creativity, from mobile apps to AI-driven systems.
