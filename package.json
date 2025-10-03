@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview --port 8080",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "git:config": "git config user.email 'poudelbibek38@gmail.com' && git config user.name 'BibekPoudel38'"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
