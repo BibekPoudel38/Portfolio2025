@@ -6,7 +6,12 @@ export {
     ],
         darkMode: 'class',
             theme: {
-    extend: { },
+    extend: { 
+        colors: {
+            'gradient-start': '#023047',
+            'gradient-end': '#219ebc',
+        },
+    },
 },
 plugins: [],
 }

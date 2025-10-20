@@ -188,14 +188,14 @@ function EduCard({ item }) {
 
 export function Education({ items = DATA }) {
   return (
-    <section id="education" className="px-6 py-20">
+    <section id="education" className="px-6 py-20 ">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
           Education
         </h2>
         <p className="mt-2 text-center text-zinc-400">My Academic Achievements</p>
 
-        <div className="mt-10 grid gap-6 md:gap-8 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:gap-8 md:grid-cols-2 ">
           {items.map((it) => (
             <EduCard key={it.school} item={it} />
           ))}

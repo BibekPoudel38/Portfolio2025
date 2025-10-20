@@ -1,6 +1,7 @@
 
 import { FileDown } from 'lucide-react';
 import React from 'react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export function Hero() {
     return (
@@ -13,10 +14,15 @@ export function Hero() {
                         Hi 👋, I'm <span className="text-purple-400">Bibek Poudel</span>
                     </h2>
                     <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto mb-6">
-                        Software Engineer - Flutter • Django • LLMs • Full Stack
+                        Software Engineer | AI/ML Researcher
                     </p>
+                     <div className="flex gap-4 align-center justify-center mb-6 ">
+                        <a href="mailto:poudelbibek38@gmail.com" className="hover:text-purple-400 transition"><Mail size={16} /></a>
+                        <a href="https://linkedin.com/in/bibpou" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition"><Linkedin size={16} /></a>
+                        <a href="https://github.com/BibekPoudel38" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition"><Github size={16} /></a>
+                    </div>
                     <p className="text-sm text-gray-400 max-w-lg mx-auto mb-10">
-                        I build tools and experiences that blend functionality and creativity, from mobile apps to AI-driven systems.
+                        I build tools that scale and research that pushes boundaries. Currently exploring the intersection of AI and software development to create innovative solutions.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center">
                         <a

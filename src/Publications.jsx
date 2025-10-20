@@ -3,7 +3,7 @@ import React, { useMemo, useState } from "react";
 
 const SAMPLE_PUBLICATIONS = [
     {
-        title: "MST: A Modified Sparse Transformer with depth-aware attention for multi-modal camera–LiDAR fusion in autonomous vehicles",
+        title: "MST: A Modified Sparse Transformer with depth-aware attention for multi-modal camera-LiDAR fusion in autonomous vehicles",
         description:
             "The paper proposes a Modified Sparse Transformer (MST) that integrates multi-view camera images and LiDAR point clouds through a fusion framework. It uses sparse attention and dynamic instance interaction to extract and refine features, while a Depth-Aware Positional Encoding (DAPE) module aligns 2D and 3D features. The model also includes feedback loops for refinement and employs multi-head self-attention and MLP for query embedding. This approach enhances 3D object detection and tracking performance in complex driving environments.",
         date: "November 2025",
@@ -12,8 +12,7 @@ const SAMPLE_PUBLICATIONS = [
     },
     {
         title: "Advancing Clinical Translation in Nepali through Fine-Tuned Multilingual Models",
-        description:
-            "Adversarial training against gradient‑free perturbations to achieve resilient control policies for autonomous driving.",
+        description: "This research explores the effectiveness of fine-tuned multilingual large language models (mBART and NLLB-200) for English-Nepali medical translation, demonstrating that NLLB-200 outperforms mBART in accuracy and fluency while addressing challenges like term omissions and hallucinations. The study emphasizes the potential of large-scale multilingual models in improving medical translation for low-resource languages with ethical and practical considerations.",
         date: "September 2025",
         venue: "RANLP 2025",
         url: "https://acl-bg.org/proceedings/2025/RANLP%202025/pdf/2025.ranlp-1.6.pdf",
@@ -129,7 +128,7 @@ export function Publications({ publications = SAMPLE_PUBLICATIONS }) {
                                     window.open(p.url, "_blank", "noopener,noreferrer");
                                 }
                             }}
-                            className="group relative rounded-2xl bg-zinc-900/60 ring-1 ring-white/5 hover:ring-2 transition"
+                            className="group relative rounded-2xl bg-zinc-900/60 ring-1 ring-white/5 hover:ring-2 transition cursor-pointer"
                         >
                             {/* Left border accent */}
                             <div className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl bg-gradient-to-b from-purple-500/80 to-pink-500/80" />

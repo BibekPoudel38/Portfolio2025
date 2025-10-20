@@ -7,7 +7,7 @@ export function About() {
                 <div className="max-w-6xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-purple-400 mb-6">About Me</h2>
                     <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                        I’m a passionate software engineer focused on building fast, intuitive, and scalable applications. With a Master’s in Computer Science (in-progress at CSUDH) and a Bachelor's from London Metropolitan University, I’ve shipped 35+ real-world apps—from AI tools to student platforms.
+                        I'm a passionate software engineer and research assistant focused on building fast, intuitive, and scalable applications. With a Master’s in Computer Science (in-progress at CSUDH) and a Bachelor's from London Metropolitan University, I’ve shipped 35+ real-world apps—from AI tools to student platforms.
                     </p>
                     <div className="mt-10 grid gap-4 md:grid-cols-4">
                         <div className="bg-zinc-800 rounded-xl p-6 shadow-lg hover:shadow-purple-600/20 transition">
@@ -16,7 +16,7 @@ export function About() {
                         </div>
                         <div className="bg-zinc-800 rounded-xl p-6 shadow-lg hover:shadow-purple-600/20 transition">
                             <h3 className="text-lg font-semibold mb-2 text-purple-300">AI Enthusiast</h3>
-                            <p className="text-sm text-gray-400">Working on low-resource language models for medical translation and real-time NLP apps.</p>
+                            <p className="text-sm text-gray-400">Researching on low-resource language, real-time NLP apps and self driving technology.</p>
                         </div>
                         <div className="bg-zinc-800 rounded-xl p-6 shadow-lg hover:shadow-purple-600/20 transition">
                             <h3 className="text-lg font-semibold mb-2 text-purple-300">Product Mindset</h3>
