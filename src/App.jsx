@@ -13,15 +13,15 @@ import { Publications } from './Publications.jsx';
 const App = () => {
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-purple-900 to-fuchsia-800 text-white font-sans scroll-smooth overflow-x-hidden">
+    <div className="relative min-h-screen bg-neutral-950 text-neutral-200 font-sans antialiased scroll-smooth overflow-x-hidden selection:bg-white selection:text-black">
       <NavBar />
-      <div className="h-24" />
+      <div className="h-16" />
       <Hero />
       <About />
-      <Publications/>
       <Experience />
       <Project />
       <Skills />
+      <Publications />
       <Education />
       <Contact />
       <Footer />

@@ -1,135 +1,156 @@
-import { ExternalLink } from 'lucide-react';
+import { BarChart3, Bot, ChefHat, ExternalLink, Lock, Share2 } from 'lucide-react';
 import React from 'react';
 
-export function Project() {
-  const projects = [
-    {
-      title: "Business Agentic AI [WIP]",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrs1zPSAyZhahInyK0TocectUYGwaUS6uIqQ&s",
-      description: "Agentic AI which uses multiple AI agents to perform business tasks like market research, competitor analysis, and customer support.",
-      tech: "Gemini 2.5 pro, Flutter, Supabase, Firebase",
-      link: "#",
-    },
-    {
-      title: "AI Recipe Generator [WIP]",
-      image: "https://www.foodandwine.com/thmb/WBos4rhEqcP1pH1TBt3qU7lP--4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Smoked-Salmon-Lyonnaise-Salad-FT-MAG-RECIPE-1224-81a86adbf03c421f8c3ef736795d7a7c.jpg",
-      description: "AI Agent based app which generates recipes from ingredients and your preferences.",
-      tech: "Gemini 2.5 pro, Flutter, Supabase, Firebase",
-      link: "#",
-    }, {
-      title: "Saral Patro",
-      image: "https://play-lh.googleusercontent.com/MYWHCSwTiwkPhkPlh7klJ_M39Tem4bKN8yZyTL7z0wtQ9xyfYPjL4QNP9gDDLJFd2j4=w240-h480-rw",
-      description: "A Nepali lunisolar calendar app with festivals and reminders.",
-      tech: "Flutter, Firebase, Google Calendar API",
-      link: "https://play.google.com/store/apps/details?id=com.saralapps.saralpatro",
-    },
-    {
-      title: "Clean Sudoku",
-      image: "https://play-lh.googleusercontent.com/CLeouww3xjilRheYKvFvw8RipIOTLHwyXmw4LX2jQ0UcYAjNNBEFQSnhEAl0TLT4urAU=w240-h480-rw",
-      description: "AI puzzle scanner, solver, and generator using camera.",
-      tech: "Flutter, TensorFlow Lite, Firebase ML Kit",
-      link: "https://play.google.com/store/apps/details?id=com.fishtailgames.sudoku",
-    },
-    {
-      title: "Pokhara Rojgar",
-      image: "https://play-lh.googleusercontent.com/RRvCPxtOr76KCQ1sqxzPrlX3_1Zj1UR_Tb_3uBySauU1hLMJMHU6nLDEO9t9_u8_F44=w240-h480-rw",
-      description: "A local government app to regulate Businesses in Pokhara, Nepal.",
-      tech: "React, Django, Supabase, Tailwind",
-      link: "https://play.google.com/store/apps/details?id=com.bpc.jobapp.bpc",
-    },
-  ];
+const AI_PROJECTS = [
+  {
+    title: "BizAI",
+    icon: Bot,
+    badge: "M.S. Final Year Project",
+    description: "Multi-agent AI system that performs business tasks — market research, competitor analysis, and customer support.",
+    tech: "Gemini 2.5 Pro, Multi-agent, Flutter, Supabase",
+  },
+  {
+    title: "AI Pantry to Recipe",
+    icon: ChefHat,
+    badge: "AI Agent",
+    description: "AI agent app that turns the ingredients in your pantry into personalized recipes based on your preferences.",
+    tech: "Gemini 2.5 Pro, AI Agents, Flutter, Supabase",
+  },
+];
 
-  const toChips = (s) => (s || "").split(",").map(t => t.trim()).filter(Boolean);
+const CLIENT_PROJECTS = [
+  {
+    title: "Real-Time Collaboration Platform",
+    icon: Share2,
+    badge: "Acquired · NDA",
+    description: "SaaS productivity app with live document editing and synchronized updates across distributed users, offline-first via Redux + IndexedDB.",
+    note: "Built as a SaaS product and acquired by a private client — proprietary under NDA.",
+    tech: "Node.js, WebSockets, GraphQL, Redux",
+    nda: true,
+  },
+  {
+    title: "Data Pipeline & Analytics Platform",
+    icon: BarChart3,
+    badge: "Acquired · NDA",
+    description: "End-to-end cloud data engineering system: Spark + Airflow ingestion, Snowflake models, and Tableau dashboards.",
+    note: "Delivered to a private client — implementation details covered by NDA.",
+    tech: "Apache Spark, Airflow, Snowflake, Tableau",
+    nda: true,
+  },
+  {
+    title: "Saral Patro",
+    image: "https://play-lh.googleusercontent.com/MYWHCSwTiwkPhkPlh7klJ_M39Tem4bKN8yZyTL7z0wtQ9xyfYPjL4QNP9gDDLJFd2j4=w240-h480-rw",
+    description: "Nepali lunisolar calendar app with festivals and reminders, published on the Play Store.",
+    tech: "Flutter, Firebase, Google Calendar API",
+    link: "https://play.google.com/store/apps/details?id=com.saralapps.saralpatro",
+  },
+  {
+    title: "Clean Sudoku",
+    image: "https://play-lh.googleusercontent.com/CLeouww3xjilRheYKvFvw8RipIOTLHwyXmw4LX2jQ0UcYAjNNBEFQSnhEAl0TLT4urAU=w240-h480-rw",
+    description: "AI puzzle scanner, solver, and generator using the device camera, published on the Play Store.",
+    tech: "Flutter, TensorFlow Lite, ML Kit",
+    link: "https://play.google.com/store/apps/details?id=com.fishtailgames.sudoku",
+  },
+];
 
-  // Text clamps (no plugin)
-  const clamp2 = { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' };
-  const clamp3 = { display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' };
+const toChips = (s) => (s || "").split(",").map(t => t.trim()).filter(Boolean);
 
+function ProjectCard({ project, featured = false }) {
+  const Icon = project.icon;
   return (
-    <section id="projects" className="px-6 py-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400">
-            Projects & Creations
-          </h2>
-          <p className="text-sm text-gray-400 mt-2">Explore some of the apps and platforms I've crafted.</p>
+    <article
+      className={`border rounded-lg bg-neutral-900/40 transition-colors overflow-hidden flex flex-col ${
+        featured ? 'border-neutral-600 hover:border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'
+      }`}
+    >
+      {/* Compact cover */}
+      <div className="relative h-20 border-b border-neutral-800 bg-neutral-900 overflow-hidden">
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 h-full w-full object-cover grayscale opacity-80"
+            loading="lazy"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Icon size={26} strokeWidth={1.25} className="text-neutral-500" aria-hidden />
+          </div>
+        )}
+        {project.badge && (
+          <span className="absolute top-2.5 left-2.5 rounded border border-neutral-700 bg-neutral-950/90 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-neutral-300">
+            {project.badge}
+          </span>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="text-sm font-semibold text-white">{project.title}</h3>
+        <p className="mt-1.5 text-[13px] text-neutral-400 leading-relaxed">{project.description}</p>
+        {project.note && (
+          <p className="mt-1.5 text-xs text-neutral-500 italic leading-relaxed">{project.note}</p>
+        )}
+
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {toChips(project.tech).map((chip) => (
+            <li
+              key={project.title + chip}
+              className="px-1.5 py-0.5 rounded border border-neutral-800 font-mono text-[10px] text-neutral-400"
+            >
+              {chip}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-auto pt-3">
+          {project.nda ? (
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-500">
+              <Lock size={12} /> Private — under NDA
+            </span>
+          ) : project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-neutral-300 hover:text-white transition-colors"
+              aria-label={`Open ${project.title}`}
+            >
+              View project <ExternalLink size={12} />
+            </a>
+          ) : (
+            <span className="font-mono text-[11px] text-neutral-500">Demo available on request</span>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function Project() {
+  return (
+    <section id="projects" className="border-b border-neutral-900">
+      <div className="max-w-5xl mx-auto px-6 py-20">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">03 — Projects</p>
+        <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white">Selected Work</h2>
+        <p className="mt-2 text-sm text-neutral-500">Products shipped to clients, app stores, and research settings.</p>
+
+        {/* Personal AI projects — featured */}
+        <h3 className="mt-10 font-mono text-xs uppercase tracking-[0.2em] text-neutral-300">Personal AI Projects</h3>
+        <p className="mt-1 text-xs text-neutral-500">Agentic AI systems I design and build end to end.</p>
+        <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {AI_PROJECTS.map((p) => (
+            <ProjectCard key={p.title} project={p} featured />
+          ))}
         </div>
 
-        {/* Equal-height tiles per breakpoint */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => {
-            const isWIP = /\[WIP\]/i.test(project.title);
-
-            return (
-              <article
-                key={project.title + i}
-                className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-purple-500/30 via-pink-500/20 to-indigo-500/30 hover:from-purple-500/50 hover:via-pink-500/40 hover:to-indigo-500/50 transition"
-              >
-                {/* Glass card */}
-                <div className="rounded-2xl bg-zinc-900/70 ring-1 ring-white/10 shadow-lg overflow-hidden flex flex-col h-full">
-                  {/* Top: perfect square image with rounded border */}
-                  <div className="p-4 pb-0">
-                    <div className="relative w-full aspect-[5/3] overflow-hidden rounded-xl bg-zinc-800">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="absolute inset-0 h-full w-full object-cover"
-                        loading="lazy"
-                      />
-                      {isWIP && (
-                        <span className="absolute top-2 left-2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 text-[11px] font-medium">
-                          WIP
-                        </span>
-                      )}
-                     
-                    </div>
-                  </div>
-
-                  {/* Content area: fixed height for perfect uniformity */}
-                  <div className="p-4 flex flex-col ">
-                    <header>
-                      <h3 className="text-base md:text-lg font-semibold text-white leading-snug" style={clamp2}>
-                        {project.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-gray-300/90" style={clamp3}>
-                        {project.description}
-                      </p>
-                    </header>
-
-                    {/* Chips (trimmed to keep height consistent) */}
-                    <div className="mt-3">
-                      <ul className="flex flex-wrap gap-1.5 max-h-10 overflow-hidden">
-                        {toChips(project.tech).map((chip) => (
-                          <li
-                            key={project.title + chip}
-                            className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[11px] text-zinc-200"
-                          >
-                            {chip}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Footer Open button (second location, very clear) */}
-                    <div className="mt-auto pt-4">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-sm rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-zinc-200 hover:text-white hover:bg-white/10 transition"
-                        aria-label={`Open ${project.title}`}
-                      >
-                        Open <ExternalLink size={14} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Subtle outer glow on hover (consistent across all cards) */}
-                <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl transition bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-indigo-500/10" />
-              </article>
-            );
-          })}
+        {/* Client & published work */}
+        <h3 className="mt-12 font-mono text-xs uppercase tracking-[0.2em] text-neutral-300">Client & Published Work</h3>
+        <p className="mt-1 text-xs text-neutral-500">Platforms sold to clients and apps live on the Play Store.</p>
+        <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {CLIENT_PROJECTS.map((p) => (
+            <ProjectCard key={p.title} project={p} />
+          ))}
         </div>
       </div>
     </section>
