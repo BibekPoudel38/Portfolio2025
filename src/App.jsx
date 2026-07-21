@@ -1,21 +1,20 @@
 import React from 'react';
 import { About } from './About.jsx';
-import { Contact } from './Contact';
-import { Education } from './Education';
-import { Experience } from './Experience';
-import { Footer } from './Footer';
-import { Hero } from './Hero';
-import { NavBar } from './NavBar';
-import { Project } from './Project';
-import { Skills } from './Skill';
+import { Contact } from './Contact.jsx';
+import { Education } from './Education.jsx';
+import { Experience } from './Experience.jsx';
+import { Footer } from './Footer.jsx';
+import { Hero } from './Hero.jsx';
+import { NavBar } from './NavBar.jsx';
+import { Project } from './Project.jsx';
 import { Publications } from './Publications.jsx';
+import { Skills } from './Skill.jsx';
 
-const App = () => {
-
-  return (
-    <div className="relative min-h-screen bg-neutral-950 text-neutral-200 font-sans antialiased scroll-smooth overflow-x-hidden selection:bg-white selection:text-black">
-      <NavBar />
-      <div className="h-16" />
+const App = () => (
+  <div className="site-shell">
+    <a className="skip-link" href="#main">Skip to content</a>
+    <NavBar />
+    <main id="main">
       <Hero />
       <About />
       <Experience />
@@ -24,9 +23,9 @@ const App = () => {
       <Publications />
       <Education />
       <Contact />
-      <Footer />
-    </div>
-  );
-};
+    </main>
+    <Footer />
+  </div>
+);
 
 export default App;

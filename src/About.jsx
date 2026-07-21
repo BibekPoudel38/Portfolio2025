@@ -1,48 +1,56 @@
+import { Boxes, Braces, KeyRound, Route } from 'lucide-react';
 import React from 'react';
 
-const PILLARS = [
-    {
-        title: 'Full Stack Engineering',
-        body: 'Java, Python, TypeScript, React, Node.js, Spring Boot, and FastAPI — delivering products end to end.',
-    },
-    {
-        title: 'AI & LLM Systems',
-        body: 'OpenAI, LangChain, RAG, vector search (FAISS, Pinecone), and LLM fine-tuning — with published research.',
-    },
-    {
-        title: 'Cloud & DevOps',
-        body: 'AWS, Docker, Kubernetes, Terraform, and CI/CD — microservices built to scale reliably.',
-    },
-    {
-        title: 'Security First',
-        body: 'OAuth2, JWT, RBAC, and API security — enterprise-grade compliance from fintech experience.',
-    },
+const SYSTEMS = [
+  {
+    icon: Route,
+    title: 'Agent systems',
+    body: 'Layered LLM routing, tool-capability gating, RAG, semantic retrieval, and workflow automation.',
+  },
+  {
+    icon: Boxes,
+    title: 'Product architecture',
+    body: 'Multi-tenant SaaS, modular app systems, typed clients, plan-aware features, and distributed services.',
+  },
+  {
+    icon: KeyRound,
+    title: 'Trust boundaries',
+    body: 'Tenant-scoped workflows, OAuth2/JWT, centralized RBAC, approvals, and prompt-validation guardrails.',
+  },
+  {
+    icon: Braces,
+    title: 'End-to-end craft',
+    body: 'React and Next.js interfaces backed by TypeScript, Java, Python, secure APIs, data, and cloud delivery.',
+  },
 ];
 
 export function About() {
-    return (
-        <section id="about" className="border-b border-neutral-900">
-            <div className="max-w-5xl mx-auto px-6 py-20">
-                <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">01 — About</p>
-                <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white">About Me</h2>
+  return (
+    <section id="about" className="section section-light">
+      <div className="container">
+        <div className="section-heading split-heading">
+          <div>
+            <span className="section-number">01 / Profile</span>
+            <h2>Architecture depth.<br />Product instinct.</h2>
+          </div>
+          <p>
+            I am a full-stack AI product engineer with 3.5 years of full-time platform engineering
+            plus enterprise applied-AI experience at JPMorgan Chase. I care about the difficult part:
+            turning a compelling AI demo into a secure, observable, maintainable product.
+          </p>
+        </div>
 
-                <p className="mt-6 max-w-3xl text-neutral-400 text-base md:text-lg leading-relaxed">
-                    I'm a Full Stack Developer delivering cloud-native solutions in fintech and e-commerce. At JPMorgan Chase,
-                    I led the creation of an AI-driven chatbot — integrating OpenAI and LangChain to cut manual support effort
-                    by 40% — and at TatvaSoft I built a high-throughput e-commerce platform that boosted transaction throughput
-                    by 35%. I hold an M.S. in Computer Science with published research in AI, and I care deeply about secure,
-                    scalable design.
-                </p>
-
-                <div className="mt-10 grid gap-px bg-neutral-800 border border-neutral-800 rounded-lg overflow-hidden md:grid-cols-2 lg:grid-cols-4">
-                    {PILLARS.map((p) => (
-                        <div key={p.title} className="bg-neutral-950 p-6 hover:bg-neutral-900 transition-colors">
-                            <h3 className="text-sm font-semibold text-white">{p.title}</h3>
-                            <p className="mt-2 text-sm text-neutral-500 leading-relaxed">{p.body}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        <div className="principle-grid">
+          {SYSTEMS.map(({ icon: Icon, title, body }, index) => (
+            <article className="principle-card" key={title}>
+              <div className="card-index">0{index + 1}</div>
+              <Icon size={23} strokeWidth={1.5} aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

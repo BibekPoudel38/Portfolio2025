@@ -1,76 +1,40 @@
-import { Send } from 'lucide-react';
+import { ArrowRight, Copy, Github, Linkedin, Mail } from 'lucide-react';
 import React, { useState } from 'react';
 
+const EMAIL = 'bibekpoudel2056@gmail.com';
+
 export function Contact() {
-    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const [copied, setCopied] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const { name, email, subject, message } = formData;
-        const mailtoLink = `mailto:bibekpoudel2056@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-        window.location.href = mailtoLink;
-    };
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  };
 
-    const inputClass =
-        'px-4 py-3 rounded-md bg-neutral-900 text-white placeholder-neutral-600 border border-neutral-800 focus:border-neutral-500 focus:outline-none transition-colors text-sm';
-
-    return (
-        <section id="contact" className="border-b border-neutral-900">
-            <div className="max-w-5xl mx-auto px-6 py-20">
-                <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">07 — Contact</p>
-                <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white">Get in Touch</h2>
-                <p className="mt-2 text-sm text-neutral-500 max-w-xl">
-                    Whether you want to discuss a role, collaborate on something, or just say hi — my inbox is open.
-                </p>
-
-                <form onSubmit={handleSubmit} className="mt-10 max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="Your Name"
-                        required
-                        className={`col-span-1 md:col-span-2 ${inputClass}`}
-                    />
-                    <input
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        type="email"
-                        placeholder="Your Email"
-                        required
-                        className={inputClass}
-                    />
-                    <input
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="Subject"
-                        required
-                        className={inputClass}
-                    />
-                    <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows="5"
-                        placeholder="Your Message"
-                        required
-                        className={`col-span-1 md:col-span-2 ${inputClass}`}
-                    ></textarea>
-                    <button
-                        type="submit"
-                        className="mt-2 col-span-1 md:col-span-2 bg-white text-black font-medium py-2.5 px-6 rounded-md flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors text-sm"
-                    >
-                        <Send size={15} /> Send Message
-                    </button>
-                </form>
-            </div>
-        </section>
-    );
+  return (
+    <section id="contact" className="contact-section">
+      <div className="container contact-grid">
+        <div>
+          <span className="section-number">07 / Contact</span>
+          <h2>Have a hard<br />problem to solve?</h2>
+        </div>
+        <div className="contact-panel">
+          <p>
+            I am open to full-time software engineering and AI product engineering opportunities,
+            especially where architecture, agents, and real product ownership meet.
+          </p>
+          <a className="contact-email" href={`mailto:${EMAIL}`}>
+            <span>{EMAIL}</span><ArrowRight size={22} />
+          </a>
+          <div className="contact-actions">
+            <button type="button" onClick={copyEmail}><Copy size={16} /> {copied ? 'Copied' : 'Copy email'}</button>
+            <a href="https://linkedin.com/in/bibpou" target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn</a>
+            <a href="https://github.com/BibekPoudel38" target="_blank" rel="noreferrer"><Github size={16} /> GitHub</a>
+          </div>
+          <div className="location-line"><Mail size={16} /> Artesia, California / Available across the United States</div>
+        </div>
+      </div>
+    </section>
+  );
 }
