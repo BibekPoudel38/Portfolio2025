@@ -1,31 +1,26 @@
 import React from 'react';
-import { About } from './About.jsx';
-import { Contact } from './Contact.jsx';
-import { Education } from './Education.jsx';
-import { Experience } from './Experience.jsx';
-import { Footer } from './Footer.jsx';
-import { Hero } from './Hero.jsx';
-import { NavBar } from './NavBar.jsx';
-import { Project } from './Project.jsx';
-import { Publications } from './Publications.jsx';
-import { Skills } from './Skill.jsx';
+import { ClinicalTranslationPage } from './pages/ClinicalTranslationPage.jsx';
+import { EesaPage } from './pages/EesaPage.jsx';
+import { HomePage } from './pages/HomePage.jsx';
+import { MstPaperPage } from './pages/MstPaperPage.jsx';
+import { ResearchPage } from './pages/ResearchPage.jsx';
 
-const App = () => (
-  <div className="site-shell">
-    <a className="skip-link" href="#main">Skip to content</a>
-    <NavBar />
-    <main id="main">
-      <Hero />
-      <About />
-      <Experience />
-      <Project />
-      <Skills />
-      <Publications />
-      <Education />
-      <Contact />
-    </main>
-    <Footer />
-  </div>
-);
+const ROUTES = {
+  '/': HomePage,
+  '/eesa': EesaPage,
+  '/research': ResearchPage,
+  '/research/mst': MstPaperPage,
+  '/research/clinical-translation': ClinicalTranslationPage,
+};
+
+const normalizePath = (path) => {
+  const normalized = path.replace(/\/+$/, '');
+  return normalized || '/';
+};
+
+const App = () => {
+  const Page = ROUTES[normalizePath(window.location.pathname)] || HomePage;
+  return <Page />;
+};
 
 export default App;
