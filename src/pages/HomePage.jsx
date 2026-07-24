@@ -211,14 +211,14 @@ export function HomePage() {
             <div className="research-preview-grid">
               <a className="research-preview-card research-card-blue" href="/research/mst/">
                 <span className="paper-label">Autonomous perception / 2025</span>
-                <h3>Helping a vehicle see depth and meaning at the same time</h3>
+                <h3>MST: A Modified Sparse Transformer with depth-aware attention for multi-modal camera-LiDAR fusion in autonomous vehicles</h3>
                 <p>The Modified Sparse Transformer combines camera semantics with LiDAR geometry while reducing wasted attention on irrelevant data.</p>
                 <div className="paper-metric"><strong>82.98%</strong><span>overall 3D mAP reported on KITTI</span></div>
                 <span className="case-link">Read the paper breakdown <ArrowRight size={17} /></span>
               </a>
               <a className="research-preview-card research-card-orange" href="/research/clinical-translation/">
                 <span className="paper-label">Medical NLP / RANLP 2025</span>
-                <h3>Making English-Nepali medical translation more reliable</h3>
+                <h3>Advancing Clinical Translation in Nepali through Fine-Tuned Multilingual Models</h3>
                 <p>The study fine-tunes and tests multilingual models on clinical language, including terminology errors and hallucinations.</p>
                 <div className="paper-metric"><strong>65.70</strong><span>BLEU for NLLB-200 vs 60.12 for mBART</span></div>
                 <span className="case-link">Read the paper breakdown <ArrowRight size={17} /></span>

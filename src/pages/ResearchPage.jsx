@@ -21,7 +21,7 @@ export function ResearchPage() {
               <div className="research-index-icon"><CarFront size={29} strokeWidth={1.5} /></div>
               <div className="research-index-copy">
                 <span>Paper 01 / Transportation Research Interdisciplinary Perspectives</span>
-                <h2>MST: A Modified Sparse Transformer for camera-LiDAR fusion</h2>
+                <h2>MST: A Modified Sparse Transformer with depth-aware attention for multi-modal camera-LiDAR fusion in autonomous vehicles</h2>
                 <p className="research-question">Question: Can a vehicle combine camera meaning and LiDAR depth without paying the full compute cost of dense attention?</p>
                 <p>The paper proposes sparse, depth-aware attention and cross-sensor alignment for 3D object detection in difficult road scenes.</p>
                 <div className="research-number-row">
@@ -37,7 +37,7 @@ export function ResearchPage() {
               <div className="research-index-icon"><Languages size={29} strokeWidth={1.5} /></div>
               <div className="research-index-copy">
                 <span>Paper 02 / RANLP 2025</span>
-                <h2>Fine-tuned multilingual models for English-Nepali medical translation</h2>
+                <h2>Advancing Clinical Translation in Nepali through Fine-Tuned Multilingual Models</h2>
                 <p className="research-question">Question: Can domain fine-tuning improve medical translation for a language with limited clinical training data?</p>
                 <p>The study builds a medical corpus, fine-tunes mBART and NLLB-200, and tests both lexical quality and clinically important errors.</p>
                 <div className="research-number-row">

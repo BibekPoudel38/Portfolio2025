@@ -17,7 +17,7 @@ export function MstPaperPage() {
       <main id="main" className="case-page paper-page">
         <CaseStudyHero
           eyebrow="Research paper / Autonomous perception"
-          title="Helping a vehicle connect what it sees with how far away it is."
+          title="MST: A Modified Sparse Transformer with depth-aware attention for multi-modal camera-LiDAR fusion in autonomous vehicles"
           summary="The Modified Sparse Transformer combines camera images and LiDAR point clouds for 3D object detection. It focuses attention on useful regions, keeps depth in the representation, and aligns the two sensors before fusion."
           tags={['Camera-LiDAR fusion', 'Sparse transformer', '3D detection', 'KITTI', 'Peer reviewed']}
           sourceUrl="https://www.sciencedirect.com/science/article/pii/S2590198225002507"

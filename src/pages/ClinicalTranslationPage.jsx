@@ -18,7 +18,7 @@ export function ClinicalTranslationPage() {
       <main id="main" className="case-page paper-page">
         <CaseStudyHero
           eyebrow="Research paper / Medical NLP"
-          title="Testing safer English-Nepali medical translation."
+          title="Advancing Clinical Translation in Nepali through Fine-Tuned Multilingual Models"
           summary="The study fine-tunes two multilingual models on clinical language, compares their translation quality, and looks beyond headline scores to the errors that could change medical meaning."
           tags={['English-Nepali', 'NLLB-200', 'mBART', 'Clinical NLP', 'RANLP 2025']}
           sourceUrl="https://aclanthology.org/2025.ranlp-1.6/"
