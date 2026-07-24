@@ -21,31 +21,31 @@ const DOMAINS = [
     icon: Bot,
     name: 'AI products and agents',
     description: 'Agents that retrieve knowledge, use tools, run workflows, and wait for approval when a person should decide.',
-    skills: ['RAG', 'LangGraph', 'MCP', 'LLM routing', 'Qdrant'],
+    skills: ['OpenAI API', 'LangChain', 'LangGraph', 'RAG', 'Embeddings', 'Semantic search', 'FAISS', 'Pinecone', 'Qdrant', 'MCP', 'LLM routing', 'Tool gating'],
   },
   {
     icon: Building2,
     name: 'Enterprise software',
     description: 'Secure services for banking, fraud operations, support systems, approvals, and role-based access.',
-    skills: ['OAuth2/JWT', 'RBAC', 'GraphQL', 'PostgreSQL', 'Redis'],
+    skills: ['OAuth2/JWT', 'RBAC', 'Multi-tenant SaaS', 'Tenant workflows', 'REST', 'GraphQL', 'API design', 'Distributed systems'],
   },
   {
     icon: Code2,
     name: 'Full-stack platforms',
     description: 'Web products built from the interface through APIs, data models, billing, deployment, and operations.',
-    skills: ['TypeScript', 'React', 'Next.js', 'Node.js', 'Java', 'Python'],
+    skills: ['TypeScript', 'JavaScript', 'Java', 'Python', 'React', 'Next.js', 'Node.js', 'Express.js', 'Spring Boot', 'FastAPI', 'WebSockets'],
   },
   {
     icon: CloudCog,
     name: 'Cloud and data systems',
     description: 'Event-driven services, data pipelines, containers, and cloud releases built for reliability and growth.',
-    skills: ['AWS', 'Docker', 'Kubernetes', 'Kafka', 'Snowflake'],
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Kafka', 'Snowflake', 'AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
   },
   {
     icon: BrainCircuit,
     name: 'Applied ML research',
     description: 'Published work in low-resource medical translation and camera-LiDAR perception for autonomous vehicles.',
-    skills: ['Transformers', 'NLP', 'Sensor fusion', 'PyTorch', 'Evaluation'],
+    skills: ['Transformers', 'NLP', 'Sensor fusion', 'PyTorch', 'Evaluation', 'Test planning', 'Code reviews', 'CI/CD', 'Release readiness'],
   },
 ];
 
@@ -76,15 +76,6 @@ const EXPERIENCES = [
   },
 ];
 
-const SKILL_GROUPS = [
-  ['AI / LLM', ['OpenAI API', 'LangChain', 'LangGraph', 'RAG', 'Embeddings', 'Semantic search', 'FAISS', 'Pinecone', 'Qdrant']],
-  ['Agent platforms', ['MCP', 'OpenAPI 3.0-to-MCP', 'LLM routing', 'Tool gating', 'Workflow automation', 'Plugin marketplaces']],
-  ['Full-stack', ['TypeScript', 'Java', 'Python', 'JavaScript', 'Next.js', 'React', 'Node.js', 'Express.js', 'Spring Boot', 'FastAPI', 'REST', 'GraphQL', 'WebSockets']],
-  ['Architecture', ['Multi-tenant SaaS', 'RBAC', 'Tenant-scoped workflows', 'Modular app systems', 'Typed API clients', 'Distributed systems']],
-  ['Data / cloud', ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Kafka', 'Snowflake', 'AWS', 'Docker', 'Kubernetes', 'GitHub Actions', 'Terraform']],
-  ['Engineering quality', ['Code reviews', 'Architecture reviews', 'API design reviews', 'Test planning', 'CI/CD', 'Release readiness', 'Agile / Scrum']],
-];
-
 export function HomePage() {
   return (
     <PageShell>
@@ -112,7 +103,7 @@ export function HomePage() {
 
             <aside className="hero-proof-card" aria-label="Career summary">
               <p className="proof-card-label">What I bring</p>
-              <div className="proof-card-row"><strong>3.5 years</strong><span>Full-time platform engineering</span></div>
+              <div className="proof-card-row"><strong>4+ years</strong><span>Full-time platform engineering</span></div>
               <div className="proof-card-row"><strong>Enterprise AI</strong><span>Applied work at JPMorgan Chase</span></div>
               <div className="proof-card-row"><strong>Full ownership</strong><span>Interface, API, data, cloud, release</span></div>
               <div className="proof-card-row"><strong>2 papers</strong><span>NLP and autonomous perception</span></div>
@@ -131,10 +122,10 @@ export function HomePage() {
         <section id="domains" className="content-section domain-section">
           <div className="layout-container">
             <div className="section-intro two-column-intro">
-              <div><span className="section-kicker">01 / Domains</span><h2>Where I do my best work</h2></div>
-              <p>My range is broad, but the pattern is simple: connect hard backend systems to a product people can use and trust.</p>
+              <div><span className="section-kicker">01 / Domains + skills</span><h2>Where I do my best work—and the skills I use</h2></div>
+              <p>Each domain is paired with the tools I use there, so you can see both what I build and how I build it.</p>
             </div>
-            <div className="domain-grid">
+            <div id="skills" className="domain-grid">
               {DOMAINS.map(({ icon: Icon, name, description, skills }, index) => (
                 <article className="domain-card" key={name}>
                   <div className="domain-card-top"><span>0{index + 1}</span><Icon size={23} strokeWidth={1.5} /></div>
@@ -156,7 +147,7 @@ export function HomePage() {
 
             <a className="work-feature" href="/eesa/">
               <div className="work-feature-main">
-                <span className="work-type">Product case study / Live</span>
+                <span className="work-type">1 / Product case study / Live</span>
                 <h3>EESA.AI</h3>
                 <p className="work-big-line">An AI agent that lets small businesses run work from chat.</p>
                 <p>It turns requests into actions across invoices, orders, approvals, status updates, and connected tools—without making staff learn another dashboard.</p>
@@ -172,14 +163,14 @@ export function HomePage() {
             <div className="project-pair">
               <article className="compact-project">
                 <Database size={23} />
-                <span className="work-type">Enterprise AI / Contracts</span>
+                <span className="work-type">2 / Enterprise AI / Contracts</span>
                 <h3>Contract Intelligence Platform</h3>
                 <p>Extracts clauses, searches legal knowledge by meaning, and supports large-scale ingestion and reporting.</p>
                 <div className="project-tech">Spring Boot / FastAPI / OpenAI / FAISS / Airflow / Spark / Snowflake</div>
               </article>
               <article className="compact-project">
                 <Network size={23} />
-                <span className="work-type">Distributed systems / Logistics</span>
+                <span className="work-type">3 / Distributed systems / Logistics</span>
                 <h3>Real-Time Logistics Visibility</h3>
                 <p>Streams shipment changes to operations teams with event-driven services, live updates, inventory sync, and monitoring.</p>
                 <div className="project-tech">Java / Spring Boot / Kafka / Redis / MongoDB / WebSockets</div>
@@ -237,26 +228,9 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="skills" className="content-section skills-section-new">
-          <div className="layout-container">
-            <div className="section-intro two-column-intro light-intro">
-              <div><span className="section-kicker">05 / Skills</span><h2>Skills, grouped by the work they support</h2></div>
-              <p>This is the working stack behind the projects and outcomes above.</p>
-            </div>
-            <div className="new-skills-grid">
-              {SKILL_GROUPS.map(([group, skills], index) => (
-                <article key={group} className="new-skill-group">
-                  <div><span>0{index + 1}</span><h3>{group}</h3></div>
-                  <ul>{skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="content-section education-section-new">
           <div className="layout-container">
-            <div className="section-intro"><span className="section-kicker">06 / Education</span><h2>Education</h2></div>
+            <div className="section-intro"><span className="section-kicker">05 / Education</span><h2>Education</h2></div>
             <div className="education-table">
               <article>
                 <time>Aug 2024 - May 2026</time>
@@ -273,7 +247,7 @@ export function HomePage() {
         <section id="contact" className="home-contact">
           <div className="layout-container contact-layout">
             <div>
-              <span className="section-kicker">07 / Contact</span>
+              <span className="section-kicker">06 / Contact</span>
               <h2>Need an engineer who can own the whole product?</h2>
             </div>
             <div>

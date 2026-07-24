@@ -87,6 +87,7 @@ img { max-width: 100%; }
 .light-intro h2 { color: #fff; }
 .light-intro > p { color: #9ea1aa; }
 .domain-section { background: var(--paper); }
+.domain-grid { scroll-margin-top: 96px; }
 .domain-grid { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); }
 .domain-card { min-height: 390px; padding: 27px; border-right: 1px solid var(--line); }
 .domain-card:last-child { border-right: 0; }
@@ -224,6 +225,8 @@ img { max-width: 100%; }
 .use-case-card dl div { display: grid; grid-template-columns: 90px 1fr; gap: 17px; padding: 18px 0; border-top: 1px solid var(--line); }
 .use-case-card dt { color: var(--cobalt); font: 500 9px var(--mono); text-transform: uppercase; }
 .use-case-card dd { margin: 0; color: #565853; font-size: 12px; line-height: 1.6; }
+.integration-section { background: var(--paper) !important; }
+.integration-card > p { margin: 0; color: #565853; font-size: 12px; line-height: 1.7; }
 .product-flow { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 0; list-style: none; border: 1px solid var(--line); }
 .product-flow li { min-height: 300px; padding: 27px; border-right: 1px solid var(--line); }
 .product-flow li:last-child { border-right: 0; }
@@ -284,6 +287,16 @@ img { max-width: 100%; }
 .method-list li > span { color: var(--orange); font: 500 10px var(--mono); }
 .method-list h3 { margin: 0 0 8px; font-size: 18px; }
 .method-list p { max-width: 850px; margin: 0; color: #9fa1a9; font-size: 13px; line-height: 1.7; }
+.rbac-section { background: var(--ink) !important; color: #fff; }
+.rbac-section .case-section-label { color: var(--orange); }
+.rbac-evolution li { grid-template-columns: 70px 40px 1fr; }
+.rbac-evolution li > svg { color: var(--orange); }
+.rbac-evolution .rbac-status { margin-bottom: 8px; color: #aeb1b8; font: 500 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.rbac-evolution .rbac-failed { color: var(--orange); }
+.rbac-evolution .rbac-final { color: #72eb82; }
+.rbac-lesson { display: grid; grid-template-columns: 40px 1fr; gap: 18px; margin-top: 25px; padding: 24px; background: var(--orange); color: var(--ink); }
+.rbac-lesson strong { font-size: 15px; }
+.rbac-lesson p { margin: 6px 0 0; font-size: 12px; line-height: 1.6; }
 .results-grid, .result-grid { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid #3b3d46; border-left: 1px solid #3b3d46; }
 .results-grid article, .result-grid article { min-height: 260px; padding: 26px; border-right: 1px solid #3b3d46; border-bottom: 1px solid #3b3d46; }
 .results-grid strong, .result-grid strong { display: block; color: var(--orange); font-size: clamp(31px, 3.4vw, 48px); letter-spacing: -.06em; }
@@ -397,6 +410,7 @@ img { max-width: 100%; }
   .sensor-compare { grid-template-columns: 1fr; }
   .sensor-result { grid-column: auto; }
   .method-list li { grid-template-columns: 42px 1fr; }
+  .rbac-evolution li { grid-template-columns: 35px 28px 1fr; gap: 12px; }
   .results-grid, .result-grid, .clinical-result-grid { grid-template-columns: 1fr; }
   .results-grid article, .result-grid article { min-height: 220px; }
   .case-next .case-container { align-items: flex-start; flex-direction: column; }

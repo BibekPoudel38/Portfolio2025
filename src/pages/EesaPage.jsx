@@ -3,13 +3,18 @@ import {
   ArrowUpRight,
   BadgeDollarSign,
   Bot,
+  BrainCircuit,
+  Braces,
   CheckCircle2,
   ClipboardCheck,
   FileInput,
+  Globe2,
   KeyRound,
   MessageCircle,
   PackageCheck,
   Plug,
+  ServerCog,
+  ShoppingBag,
   ReceiptText,
   ShieldCheck,
   Store,
@@ -59,7 +64,7 @@ const BUILD_AREAS = [
   },
   {
     title: 'One permissions system',
-    text: 'Built centralized RBAC that controls navigation, routes, approvals, tenant limits, and role-specific features from one source.',
+    text: 'Built deterministic, Python-based RBAC that filters tools and data before the LLM runs, while controlling navigation, routes, approvals, and tenant limits from one source.',
   },
   {
     title: 'API-to-agent tools',
@@ -68,6 +73,29 @@ const BUILD_AREAS = [
   {
     title: 'Complete product operations',
     text: 'Delivered Stripe billing, a plugin marketplace, Monaco-based authoring, drag-and-drop dashboards, approval queues, and Coolify deployment.',
+  },
+];
+
+const INTEGRATIONS = [
+  {
+    icon: Globe2,
+    title: 'WordPress',
+    text: 'Connect WordPress sites to approved content, publishing, customer, and operational workflows through their available APIs.',
+  },
+  {
+    icon: ShoppingBag,
+    title: 'Shopify',
+    text: 'Use Shopify APIs for product, inventory, order, customer, and fulfillment workflows while keeping actions inside role limits.',
+  },
+  {
+    icon: Braces,
+    title: 'Any REST API',
+    text: 'Turn documented REST endpoints into agent tools. The OpenAPI 3.0-to-MCP generator handles tool definitions, inputs, and approved actions.',
+  },
+  {
+    icon: ServerCog,
+    title: 'Any MCP server',
+    text: 'Connect tools exposed by an MCP server, then filter those tools through tenant settings and user permissions before the model sees them.',
   },
 ];
 
@@ -153,6 +181,66 @@ export function EesaPage() {
           </div>
         </section>
 
+        <section className="case-section integration-section">
+          <div className="case-container">
+            <div className="case-title-row">
+              <span className="case-section-label">Supported platforms</span>
+              <h2>Connect the systems a business already runs.</h2>
+            </div>
+            <div className="use-case-grid integration-grid">
+              {INTEGRATIONS.map(({ icon: Icon, title, text }, index) => (
+                <article className="use-case-card integration-card" key={title}>
+                  <div><span>0{index + 1}</span><Icon size={24} strokeWidth={1.5} /></div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="case-section rbac-section">
+          <div className="case-container">
+            <div className="case-title-row">
+              <span className="case-section-label">RBAC engineering</span>
+              <h2>Three permission gates—and why the final one removed authorization from the LLM.</h2>
+            </div>
+            <ol className="method-list rbac-evolution">
+              <li>
+                <span>01</span>
+                <BrainCircuit size={23} />
+                <div>
+                  <p className="rbac-status rbac-failed">Failed badly</p>
+                  <h3>LLM-only permission gate</h3>
+                  <p>The model received roles and policy instructions, then decided whether a request was allowed. The result was prompt-sensitive and inconsistent: the same policy could produce different decisions, and wording could influence authorization.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <Bot size={23} />
+                <div>
+                  <p className="rbac-status">Improved, but still probabilistic</p>
+                  <h3>Python permissions + LLM decision</h3>
+                  <p>Python loaded the user’s explicit permissions and supplied them to the model. This gave the LLM better facts, but the LLM still made the final allow-or-deny judgment, so a security boundary still depended on model interpretation.</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <ShieldCheck size={23} />
+                <div>
+                  <p className="rbac-status rbac-final">Current design</p>
+                  <h3>Deterministic Python gate before the LLM</h3>
+                  <p>Python resolves the tenant, role, resource, and action first. It then exposes only the tools, schemas, and data that user is allowed to access. The LLM cannot choose a forbidden capability because that capability never enters its context.</p>
+                </div>
+              </li>
+            </ol>
+            <div className="rbac-lesson">
+              <KeyRound size={22} />
+              <div><strong>Engineering lesson</strong><p>Use the LLM to understand intent and plan work. Use deterministic code to enforce authorization.</p></div>
+            </div>
+          </div>
+        </section>
+
         <section className="case-section build-section">
           <div className="case-container split-case build-intro">
             <div>
@@ -194,7 +282,7 @@ export function EesaPage() {
           <div className="case-container split-case">
             <div><span className="case-section-label">Stack</span><h2>Built for product use, not a demo.</h2></div>
             <ul className="stack-wall">
-              {['Next.js', 'React', 'TypeScript', 'MCP', 'OpenAPI 3.0', 'Qdrant', 'Stripe', 'Docker', 'Coolify', 'Monaco Editor', 'RBAC', 'Multi-tenant SaaS'].map((item) => <li key={item}>{item}</li>)}
+              {['Next.js', 'React', 'TypeScript', 'WordPress', 'Shopify', 'REST APIs', 'MCP servers', 'OpenAPI 3.0', 'Qdrant', 'Stripe', 'Docker', 'Coolify', 'Python RBAC', 'Multi-tenant SaaS'].map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
         </section>
