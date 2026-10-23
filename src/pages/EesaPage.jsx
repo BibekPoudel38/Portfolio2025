@@ -5,98 +5,104 @@ import {
   Bot,
   BrainCircuit,
   Braces,
-  CheckCircle2,
-  ClipboardCheck,
-  FileInput,
-  Globe2,
+  Cpu,
+  Layers,
   KeyRound,
-  MessageCircle,
-  PackageCheck,
   Plug,
   ServerCog,
   ShoppingBag,
-  ReceiptText,
   ShieldCheck,
-  Store,
-  Users,
-  Utensils,
-  Wrench,
+  Zap,
 } from 'lucide-react';
 import React from 'react';
 import { CaseStudyHero } from '../components/CaseStudyHero.jsx';
 import { PageShell } from '../components/PageShell.jsx';
 
-const USE_CASES = [
-  {
-    icon: ReceiptText,
-    title: 'Accounting and finance',
-    problem: 'Creating invoices or checking balances requires opening another system and entering the same information again.',
-    solution: 'Ask for the invoice or report in chat. The agent collects missing details, uses the connected accounting tool, and returns the result.',
-  },
-  {
-    icon: Utensils,
-    title: 'Restaurants',
-    problem: 'Orders, kitchen work, inventory checks, and purchase approvals arrive through different channels.',
-    solution: 'Route an order to the right staff screen, update stock, and send large purchase orders to a manager for approval.',
-  },
-  {
-    icon: Store,
-    title: 'Retail',
-    problem: 'Staff switch between customer messages, stock systems, and return workflows while customers wait.',
-    solution: 'Let the agent check inventory, answer order questions, and start approved returns from the same conversation.',
-  },
-  {
-    icon: Wrench,
-    title: 'Service businesses',
-    problem: 'Bookings, reminders, status updates, and invoices take time because each step is handled separately.',
-    solution: 'Turn one customer request into a connected workflow that schedules work, sends updates, and creates the invoice.',
-  },
+const ARCHITECTURAL_METRICS = [
+  { value: '~16:1', label: 'OpenAPI-to-MCP Compiler', detail: 'Consolidated 923 operations into 57 agent tool definitions' },
+  { value: '7,600+', label: 'Backend Tests', detail: 'Zero regressions across 4-layer router and 5 providers' },
+  { value: '$188/mo', label: 'Ledger Diagnostics', detail: '74% savings via prompt-prefix cache & tier routing' },
+  { value: '~1,300 → 4', label: 'Permission Caching', detail: 'Request-scoped permission cache & sub-second streaming' },
+  { value: '3 Clients', label: 'Web + Flutter + MCP', detail: 'Production multi-tenant SaaS with centralized RBAC' },
 ];
 
-const BUILD_AREAS = [
+const ARCHITECTURAL_PILLARS = [
   {
-    title: 'Tenant-aware product',
-    text: 'Built admin, tenant, onboarding, and marketing surfaces around protected workflows, plans, and tenant-specific settings.',
+    icon: BadgeDollarSign,
+    tag: 'Pillar 01 / Unit Economics & Caching Architecture',
+    title: 'LLM Unit-Cost Diagnostics & Caching Architecture',
+    description:
+      'Instrumented provider token ledgers to diagnose a measured $188/user/month unit cost, tracing 74% of spend to prompt-prefix cache overhead and (sliced by model tier) 79% to a single over-provisioned model; re-architected model routing and tool-spec caching against that finding.',
   },
   {
-    title: 'Four-layer model routing',
-    text: 'Designed separate routing for master selection, conversation, orchestration, and workflow execution, including tenant overrides and cost tracking.',
+    icon: Braces,
+    tag: 'Pillar 02 / Schema Compilation',
+    title: 'OpenAPI 3.1-to-MCP Compiler (~16:1 Compression)',
+    description:
+      'Built an OpenAPI 3.1 compiler that consolidated 923 API operations (737 paths, 79 categories) into 57 intent-level MCP tool definitions (~16:1 reduction), deploying 12 to production to reduce ambiguous endpoint selection by small models.',
   },
   {
-    title: 'One permissions system',
-    text: 'Built deterministic, Python-based RBAC that filters tools and data before the LLM runs, while controlling navigation, routes, approvals, and tenant limits from one source.',
+    icon: Cpu,
+    tag: 'Pillar 03 / Multi-Provider Orchestration',
+    title: '4-Layer Provider-Agnostic LLM Router',
+    description:
+      'Migrated the platform off a single LLM vendor to a 4-layer router across 5 providers (Anthropic, OpenAI, Gemini, Moonshot, Ollama) using custom native adapters to preserve per-provider prompt caching, merging with zero regressions across a 7,600-test backend suite.',
   },
   {
-    title: 'API-to-agent tools',
-    text: 'Developed an OpenAPI 3.0-to-MCP generator that turns approved REST endpoints into tools an agent can call.',
+    icon: Zap,
+    tag: 'Pillar 04 / Latency Engineering',
+    title: 'Agent Latency & Permission Caching',
+    description:
+      'Profiled ~1,300 uncached pre-token permission reads (198 tools × ~7 reads) across 6 sequential model round trips; eliminated ~200 redundant reads by wiring a request-scoped permission cache and shipped final-pass token streaming to render initial text within seconds rather than at end-of-turn.',
   },
   {
-    title: 'Complete product operations',
-    text: 'Delivered Stripe billing, a plugin marketplace, Monaco-based authoring, drag-and-drop dashboards, approval queues, and Coolify deployment.',
+    icon: Layers,
+    tag: 'Pillar 05 / Multi-Tenant SaaS Execution',
+    title: 'End-to-End Multi-Tenant SaaS Execution',
+    description:
+      'Engineered and operate the platform across web, Flutter, and MCP clients with centralized RBAC, tenant-scoped workflows, Stripe billing, a Monaco-based plugin marketplace, approval queues, and automated Coolify/Docker deployments.',
   },
 ];
 
 const INTEGRATIONS = [
   {
-    icon: Globe2,
-    title: 'WordPress',
-    text: 'Connect WordPress sites to approved content, publishing, customer, and operational workflows through their available APIs.',
-  },
-  {
-    icon: ShoppingBag,
-    title: 'Shopify',
-    text: 'Use Shopify APIs for product, inventory, order, customer, and fulfillment workflows while keeping actions inside role limits.',
-  },
-  {
     icon: Braces,
-    title: 'Any REST API',
-    text: 'Turn documented REST endpoints into agent tools. The OpenAPI 3.0-to-MCP generator handles tool definitions, inputs, and approved actions.',
+    title: 'OpenAPI 3.1 Compiler',
+    text: 'Consolidates 923 API operations into 57 intent-level MCP tool definitions (~16:1 compression), reducing ambiguous endpoint selection by small models.',
   },
   {
     icon: ServerCog,
-    title: 'Any MCP server',
-    text: 'Connect tools exposed by an MCP server, then filter those tools through tenant settings and user permissions before the model sees them.',
+    title: 'Model Context Protocol (MCP)',
+    text: 'Standardized tool integration connecting external MCP servers, filtered dynamically by tenant settings and centralized RBAC before model context injection.',
   },
+  {
+    icon: ShoppingBag,
+    title: 'Shopify & E-Commerce APIs',
+    text: 'Handles live inventory locking, checkout flows, order management, and customer status updates with automated idempotency and dead-letter retries.',
+  },
+  {
+    icon: Plug,
+    title: 'Enterprise REST & WebSockets',
+    text: 'Connects internal ERPs, accounting tools, and databases with streaming state synchronization and sub-second event broadcasts.',
+  },
+];
+
+const STACK_ITEMS = [
+  'Python',
+  'Django',
+  'Next.js',
+  'React',
+  'TypeScript',
+  'Flutter',
+  'MCP',
+  'OpenAPI 3.1',
+  'LangGraph',
+  'Qdrant',
+  'PostgreSQL',
+  'Redis',
+  'Stripe',
+  'Docker',
+  'Coolify',
 ];
 
 export function EesaPage() {
@@ -104,95 +110,76 @@ export function EesaPage() {
     <PageShell navTone="dark">
       <main id="main" className="case-page">
         <CaseStudyHero
-          eyebrow="Product case study / EESA.AI"
-          title="Run business work from a conversation."
-          summary="EESA.AI connects chat, business tools, repeatable workflows, and human approvals. A person asks for work in plain language; the platform carries it out in the systems the business already uses."
-          tags={['Multi-tenant SaaS', 'AI agents', 'MCP', 'Workflow automation', 'RBAC']}
+          eyebrow="1 / Production AI Platform / Live (2025 – Present)"
+          title="A multi-tenant AI agent and workflow automation platform engineered for production unit economics, tool accuracy, and low pre-token latency."
+          summary="Creator of EESA.AI, a multi-tenant agent platform featuring a 5-provider LLM router and an OpenAPI 3.1-to-MCP compiler that consolidates 923 API operations into 57 agent tool definitions. Engineered across Web, Flutter, and MCP clients."
+          tags={['~16:1 OpenAPI-to-MCP Compiler', '4-Layer 5-Provider Router', '7,600-Test Suite', '$188/mo Ledger Diagnostics', 'Web + Flutter + MCP']}
           sourceUrl="https://eesa.ai"
           sourceLabel="Visit EESA.AI"
           theme="ink"
         />
 
-        <section className="case-section case-definition">
-          <div className="case-container split-case">
-            <div>
-              <span className="case-section-label">In one sentence</span>
-              <h2>EESA.AI is an agent that completes business tasks through chat.</h2>
-            </div>
-            <div className="large-body">
-              <p>It is not a chatbot that only answers questions. It can use connected APIs, run a workflow, ask a manager to approve a sensitive action, and return the result to the person who requested it.</p>
-              <p>The goal is simple: reduce the time small teams spend moving information between messages, dashboards, and spreadsheets.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="case-section case-problem-section">
+        <section className="case-section" style={{ background: '#0e0f14', paddingBlock: '60px', borderBottom: '1px solid #282a35' }}>
           <div className="case-container">
-            <div className="case-title-row">
-              <span className="case-section-label">The problem</span>
-              <h2>Small teams lose time between the request and the system that can complete it.</h2>
-            </div>
-            <div className="problem-chain">
-              <div><MessageCircle size={21} /><strong>A request arrives</strong><span>Customer message, staff question, manager instruction</span></div>
-              <ArrowRight size={18} />
-              <div><Users size={21} /><strong>Someone translates it</strong><span>They decide which tool, form, or person is needed</span></div>
-              <ArrowRight size={18} />
-              <div><FileInput size={21} /><strong>Data is entered again</strong><span>The same details move into another dashboard</span></div>
-              <ArrowRight size={18} />
-              <div><ClipboardCheck size={21} /><strong>Approval gets chased</strong><span>Important work waits in email or another chat</span></div>
-            </div>
-          </div>
-        </section>
-
-        <section className="case-section use-case-section">
-          <div className="case-container">
-            <div className="case-title-row">
-              <span className="case-section-label">Use cases</span>
-              <h2>What a business can use it for</h2>
-            </div>
-            <div className="use-case-grid">
-              {USE_CASES.map(({ icon: Icon, title, problem, solution }, index) => (
-                <article className="use-case-card" key={title}>
-                  <div><span>0{index + 1}</span><Icon size={24} strokeWidth={1.5} /></div>
-                  <h3>{title}</h3>
-                  <dl>
-                    <div><dt>Before</dt><dd>{problem}</dd></div>
-                    <div><dt>With EESA.AI</dt><dd>{solution}</dd></div>
-                  </dl>
-                </article>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+              {ARCHITECTURAL_METRICS.map((metric) => (
+                <div key={metric.label} style={{ padding: '24px', background: '#161821', border: '1px solid #2c2f3d' }}>
+                  <strong style={{ display: 'block', color: 'var(--orange)', fontSize: '30px', letterSpacing: '-0.04em' }}>{metric.value}</strong>
+                  <span style={{ display: 'block', margin: '8px 0 4px', color: '#fff', fontSize: '12px', fontWeight: 700 }}>{metric.label}</span>
+                  <p style={{ margin: 0, color: '#9699a2', fontSize: '11px', lineHeight: 1.5 }}>{metric.detail}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="case-section product-flow-section">
-          <div className="case-container">
-            <div className="case-title-row">
-              <span className="case-section-label">Product flow</span>
-              <h2>From message to completed work</h2>
+        <section className="case-section case-definition">
+          <div className="case-container split-case">
+            <div>
+              <span className="case-section-label">Platform Overview</span>
+              <h2>A production platform built for hard systems constraints.</h2>
             </div>
-            <ol className="product-flow">
-              <li><span>01</span><MessageCircle size={23} /><h3>Ask</h3><p>A customer or employee sends a request in chat.</p></li>
-              <li><span>02</span><Bot size={23} /><h3>Understand</h3><p>The agent identifies the task, missing details, and allowed actions.</p></li>
-              <li><span>03</span><Plug size={23} /><h3>Use tools</h3><p>The platform calls an approved API, MCP tool, or workflow.</p></li>
-              <li><span>04</span><ShieldCheck size={23} /><h3>Approve</h3><p>Sensitive work waits for the right person before it continues.</p></li>
-              <li><span>05</span><CheckCircle2 size={23} /><h3>Finish</h3><p>The action is recorded and the result goes back to the requester.</p></li>
-            </ol>
+            <div className="large-body">
+              <p>
+                EESA.AI is a multi-tenant AI agent and workflow automation platform engineered for
+                production unit economics, tool accuracy, and low pre-token latency.
+              </p>
+              <p>
+                By building custom native provider adapters, an OpenAPI 3.1-to-MCP schema compiler, and
+                request-scoped permission caching in Python, the platform achieves robust enterprise compliance
+                while maintaining instant streaming response times.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="case-section integration-section">
+        <section className="case-section build-section">
           <div className="case-container">
             <div className="case-title-row">
-              <span className="case-section-label">Supported platforms</span>
-              <h2>Connect the systems a business already runs.</h2>
+              <span className="case-section-label">Architecture Highlights</span>
+              <h2>Core Systems Architecture</h2>
             </div>
-            <div className="use-case-grid integration-grid">
-              {INTEGRATIONS.map(({ icon: Icon, title, text }, index) => (
-                <article className="use-case-card integration-card" key={title}>
-                  <div><span>0{index + 1}</span><Icon size={24} strokeWidth={1.5} /></div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {ARCHITECTURAL_PILLARS.map(({ icon: Icon, tag, title, description }) => (
+                <article
+                  key={tag}
+                  style={{
+                    padding: '32px',
+                    background: '#15171f',
+                    border: '1px solid #333644',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
+                    <div style={{ display: 'grid', width: '38px', height: '38px', placeItems: 'center', background: 'rgba(255,91,50,0.12)', border: '1px solid var(--orange)' }}>
+                      <Icon size={20} color="var(--orange)" />
+                    </div>
+                    <div>
+                      <span style={{ color: 'var(--orange)', font: '500 10px var(--mono)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{tag}</span>
+                      <h3 style={{ margin: '2px 0 0', color: '#fff', fontSize: '20px', letterSpacing: '-0.03em' }}>{title}</h3>
+                    </div>
+                  </div>
+                  <p style={{ margin: 0, color: '#c5c7d0', fontSize: '13px', lineHeight: 1.7 }}>{description}</p>
                 </article>
               ))}
             </div>
@@ -202,94 +189,149 @@ export function EesaPage() {
         <section className="case-section rbac-section">
           <div className="case-container">
             <div className="case-title-row">
-              <span className="case-section-label">RBAC engineering</span>
-              <h2>Three permission gates—and why the final one removed authorization from the LLM.</h2>
+              <span className="case-section-label">Permission Caching</span>
+              <h2>Request-Scoped Permission Caching & Latency Optimization</h2>
             </div>
             <ol className="method-list rbac-evolution">
               <li>
                 <span>01</span>
                 <BrainCircuit size={23} />
                 <div>
-                  <p className="rbac-status rbac-failed">Failed badly</p>
-                  <h3>LLM-only permission gate</h3>
-                  <p>The model received roles and policy instructions, then decided whether a request was allowed. The result was prompt-sensitive and inconsistent: the same policy could produce different decisions, and wording could influence authorization.</p>
+                  <p className="rbac-status rbac-failed">Phase 1: Failed Badly</p>
+                  <h3>LLM-Only Permission Gate</h3>
+                  <p>
+                    Initially fed role rules and authorization constraints directly into the prompt. The model proved
+                    highly prompt-sensitive and non-deterministic: jailbreaks, indirect injection, and slight prompt
+                    variations bypassed security checks.
+                  </p>
                 </div>
               </li>
               <li>
                 <span>02</span>
                 <Bot size={23} />
                 <div>
-                  <p className="rbac-status">Improved, but still probabilistic</p>
-                  <h3>Python permissions + LLM decision</h3>
-                  <p>Python loaded the user’s explicit permissions and supplied them to the model. This gave the LLM better facts, but the LLM still made the final allow-or-deny judgment, so a security boundary still depended on model interpretation.</p>
+                  <p className="rbac-status">Phase 2: Improved, but Probabilistic</p>
+                  <h3>Python Permissions + LLM Authorization</h3>
+                  <p>
+                    Python fetched user permissions and injected them as structured JSON facts into the prompt. While
+                    factual accuracy improved, the model retained final execution authority, maintaining a probabilistic
+                    vulnerability surface at the security boundary.
+                  </p>
                 </div>
               </li>
               <li>
                 <span>03</span>
                 <ShieldCheck size={23} />
                 <div>
-                  <p className="rbac-status rbac-final">Current design</p>
-                  <h3>Deterministic Python gate before the LLM</h3>
-                  <p>Python resolves the tenant, role, resource, and action first. It then exposes only the tools, schemas, and data that user is allowed to access. The LLM cannot choose a forbidden capability because that capability never enters its context.</p>
+                  <p className="rbac-status rbac-final">Phase 3: Current Architecture</p>
+                  <h3>Deterministic Python Gate & Request-Scoped Cache</h3>
+                  <p>
+                    Profiled ~1,300 uncached pre-token permission reads (198 tools × ~7 reads) across 6 sequential model round trips.
+                    Eliminated ~200 redundant reads by wiring a request-scoped permission cache and shipped final-pass token streaming
+                    to render initial text within seconds rather than at end-of-turn.
+                  </p>
                 </div>
               </li>
             </ol>
             <div className="rbac-lesson">
               <KeyRound size={22} />
-              <div><strong>Engineering lesson</strong><p>Use the LLM to understand intent and plan work. Use deterministic code to enforce authorization.</p></div>
+              <div>
+                <strong>Core Architectural Principle</strong>
+                <p>
+                  Use LLMs exclusively for conversational comprehension and workflow synthesis. Enforce all authentication,
+                  authorization, and tenant isolation strictly in deterministic application code.
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section className="case-section build-section">
-          <div className="case-container split-case build-intro">
-            <div>
-              <span className="case-section-label">My work on the platform</span>
-              <h2>I worked across the complete product.</h2>
-            </div>
-            <p className="large-body">The hard part was not one AI call. It was making models, permissions, tools, billing, workflows, and tenant data work together as one product.</p>
-          </div>
-          <div className="case-container build-area-list">
-            {BUILD_AREAS.map((area, index) => (
-              <article key={area.title}>
-                <span>0{index + 1}</span><h3>{area.title}</h3><p>{area.text}</p>
-              </article>
-            ))}
           </div>
         </section>
 
         <section className="case-section architecture-section">
           <div className="case-container">
             <div className="case-title-row">
-              <span className="case-section-label">Platform structure</span>
-              <h2>Four routing layers keep model choice tied to the job.</h2>
+              <span className="case-section-label">Multi-Provider Router</span>
+              <h2>4-Layer Routing Engine Across 5 Foundation Providers</h2>
             </div>
             <div className="routing-layers">
-              <div><span>01</span><strong>Master</strong><p>Chooses the broad model policy and available capabilities.</p></div>
-              <div><span>02</span><strong>Conversation</strong><p>Handles the user exchange, context, and immediate response.</p></div>
-              <div><span>03</span><strong>Orchestration</strong><p>Plans which agent, tool, or workflow should handle the request.</p></div>
-              <div><span>04</span><strong>Workflow</strong><p>Runs the task with the model, limits, and cost rules set for that workflow.</p></div>
+              <div>
+                <span>01</span>
+                <strong>Master</strong>
+                <p>Governs global tenant policy, model quotas, security constraints, and fallback hierarchy.</p>
+              </div>
+              <div>
+                <span>02</span>
+                <strong>Conversation</strong>
+                <p>Maintains conversational state, streaming multiplexing, and rapid intent classification.</p>
+              </div>
+              <div>
+                <span>03</span>
+                <strong>Orchestration</strong>
+                <p>Decomposes user requests into intent-level MCP tool invocations and sub-agent workflows.</p>
+              </div>
+              <div>
+                <span>04</span>
+                <strong>Workflow</strong>
+                <p>Executes deterministic tasks with cost-optimized models, enforcing token limits and retry protocols.</p>
+              </div>
             </div>
             <div className="architecture-notes">
-              <div><KeyRound size={20} /><strong>Tenant overrides</strong><span>Each business can choose different models and limits without changing the whole platform.</span></div>
-              <div><BadgeDollarSign size={20} /><strong>Cost attribution</strong><span>Usage can be measured at the layer where the model was used.</span></div>
-              <div><PackageCheck size={20} /><strong>Capability gating</strong><span>A model is only selected when it can safely perform the required action.</span></div>
+              <div>
+                <KeyRound size={20} />
+                <strong>Tenant-Level Overrides</strong>
+                <span>Tenants can pin custom providers (e.g. self-hosted Ollama or Azure OpenAI) without codebase modification.</span>
+              </div>
+              <div>
+                <BadgeDollarSign size={20} />
+                <strong>Cost Attribution</strong>
+                <span>Ledger instruments token usage per tenant, per layer, and per session, isolating prompt-cache economics.</span>
+              </div>
+              <div>
+                <Plug size={20} />
+                <strong>Capability Gating</strong>
+                <span>Models are dynamically selected based on tool-calling reliability, context window, and streaming speed.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="case-section integration-section">
+          <div className="case-container">
+            <div className="case-title-row">
+              <span className="case-section-label">Integrations & Protocols</span>
+              <h2>Enterprise Tools, MCP Servers, and E-Commerce APIs</h2>
+            </div>
+            <div className="use-case-grid integration-grid">
+              {INTEGRATIONS.map(({ icon: Icon, title, text }, index) => (
+                <article className="use-case-card integration-card" key={title}>
+                  <div>
+                    <span>0{index + 1}</span>
+                    <Icon size={24} strokeWidth={1.5} />
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
         <section className="case-section case-stack-section">
           <div className="case-container split-case">
-            <div><span className="case-section-label">Stack</span><h2>Built for product use, not a demo.</h2></div>
+            <div>
+              <span className="case-section-label">Technology Stack</span>
+              <h2>Engineered for High-Throughput Production SaaS</h2>
+            </div>
             <ul className="stack-wall">
-              {['Next.js', 'React', 'TypeScript', 'WordPress', 'Shopify', 'REST APIs', 'MCP servers', 'OpenAPI 3.0', 'Qdrant', 'Stripe', 'Docker', 'Coolify', 'Python RBAC', 'Multi-tenant SaaS'].map((item) => <li key={item}>{item}</li>)}
+              {STACK_ITEMS.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </div>
         </section>
 
         <section className="case-next">
           <div className="case-container">
-            <p>See the research behind my machine-learning work.</p>
+            <p>Explore the peer-reviewed machine learning research powering my perception and NLP work.</p>
             <a href="/research/">Research and publications <ArrowUpRight size={20} /></a>
           </div>
         </section>
